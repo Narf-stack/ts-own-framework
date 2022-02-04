@@ -6,6 +6,8 @@ interface UserProps{
 type Callback = ()=>{} // seting type allias for fonction type
 
 export class User{
+    events: {[key:string]: Callback[]} = {}
+
     constructor(private data: UserProps){}
 
     get(propName: string): (string|number){
@@ -18,6 +20,6 @@ export class User{
     }
 
     on(eventName:string, callback:Callback){   
-        
+
     }
 }
