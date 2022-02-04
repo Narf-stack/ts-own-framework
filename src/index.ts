@@ -6,7 +6,10 @@ user.on('click',()=>{
     console.log('hey')
 })
 user.on('change',()=>{
-    console.log('hey')
+    console.log('mouaaaa')
 })
 
-console.log(user)
+user.trigger('click')
+user.trigger('blop')
+user.trigger('change')
+// console.log(user)
