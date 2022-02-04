@@ -3,7 +3,8 @@ interface UserProps{
     age?:number
 }
 
-type Callback = ()=>{} // seting type allias for fonction type
+// type Callback = ()=>{} // type allias for fonction that return a object
+type Callback = ()=> void // type allias for fonction that return nothing
 
 export class User{
     events: {[key:string]: Callback[]} = {}
@@ -19,7 +20,10 @@ export class User{
         Object.assign(this.data, update)
     }
 
-    on(eventName:string, callback:Callback){   
+    on(eventName:string, callback:Callback):void{   
+        const handlers = this.events[eventName] || []
+        handlers.push(callback)
+        this.events[eventName] = handlers
 
     }
 }

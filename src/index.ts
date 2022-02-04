@@ -1,11 +1,12 @@
-import {User } from './models/User'
+import { User } from './models/User'
 
-const user = new User({name: ' test', age: 20});
+const user = new User({name: 'test', age: 20});
 
-console.log(user.get('name'))
-console.log(user.get('age'))
+user.on('click',()=>{
+    console.log('hey')
+})
+user.on('change',()=>{
+    console.log('hey')
+})
 
-user.set({name:'john'})
-
-console.log(user.get('name'))
-console.log(user.get('age'))
+console.log(user)
