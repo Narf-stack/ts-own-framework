@@ -4,3 +4,8 @@ const user = new User({name: ' test', age: 20});
 
 console.log(user.get('name'))
 console.log(user.get('age'))
+
+user.set({name:'john'})
+
+console.log(user.get('name'))
+console.log(user.get('age'))
