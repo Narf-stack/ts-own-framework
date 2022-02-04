@@ -26,5 +26,6 @@ import axios from 'axios'
 //     }
 //   });
 
-const user = new User({id: 1});
-user.fetch()
+const user = new User({name: 'tott',age:90});
+
+user.save()
