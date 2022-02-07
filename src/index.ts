@@ -26,7 +26,7 @@ import axios from 'axios'
 //     }
 //   });
 
-const user = new User({name: 'totezezt',age:20});
+//const user = new User({name: 'totezezt',age:20});
 
 // user.events.on('click',()=>{
 //     console.log('hey') 
