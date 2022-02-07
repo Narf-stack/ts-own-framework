@@ -4,7 +4,8 @@ export class Attributes<T>  {
     constructor(private data: T){}
 
     // <K extends keyof T> is a constraint limiting the type K can be , 169
-    get<K extends keyof T>(key: K): T[K]{  // K = keyOfObject
+    //  K = keyOfObject
+    get = <K extends keyof T>(key: K): T[K] => {  // bound 173
         return this.data[key];
     }
 
