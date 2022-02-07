@@ -1,4 +1,5 @@
-import { User } from './models/User'
+import { User,UserProps } from './models/User'
+import { Collection } from './models/Collection'
 import axios from 'axios'
 
 // const user = new User({name: 'test', age: 20});
@@ -34,3 +35,15 @@ import axios from 'axios'
 // user.events.trigger('click')
 
 // user.save()
+
+const collection = new Collection<User,UserProps>(
+    'http://localhost:3000/users',
+    (json: UserProps) => User.buildUser(json)
+)
+
+
+collection.on('change', ()=>{
+    console.log(collection)
+})
+
+collection.fetch()
