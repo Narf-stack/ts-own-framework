@@ -20,7 +20,7 @@ export class User {
         this.attributes = new Attributes<UserProps>(attrs)
     }
 
-    get on() {                      // Turn to getters 173
+    get on() {                      // Turn to getters 173, expose methods to the outside world
         return this.events.on
     }
     get trigger() {
