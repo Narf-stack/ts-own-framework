@@ -29,7 +29,9 @@ export class Model<T extends HasId> {
     ){}
 
 
-    get on() {                      // Turn to getters 173, expose methods to the outside world
+    // Turn to getters 173, expose methods to the outside world
+    // 183 short
+    get on() {                      
         return this.events.on
     }
     get trigger() {
