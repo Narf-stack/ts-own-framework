@@ -2559,8 +2559,9 @@ exports.UserForm = void 0;
 var UserForm =
 /** @class */
 function () {
-  function UserForm(parent) {
+  function UserForm(parent, model) {
     this.parent = parent;
+    this.model = model;
   }
 
   UserForm.prototype.eventsMap = function () {
@@ -2574,7 +2575,7 @@ function () {
   };
 
   UserForm.prototype.template = function () {
-    return " \n            <div>\n                <h1> User Form </h1>\n                <input />\n                <button>Click Me </button>\n            <div>\n        ";
+    return " \n            <div>\n                <h1> User Form </h1>\n                <div>User name: ".concat(this.model.get('name'), "</div>\n                <div>User age: ").concat(this.model.get('age'), "</div>\n                <input />\n                <button>Click Me </button>\n            <div>\n        ");
   };
 
   UserForm.prototype.bindEvents = function (fragment) {
@@ -2655,7 +2656,11 @@ collection.on('change', function () {
   console.log(collection);
 });
 collection.fetch();
-var userForm = new Userform_1.UserForm(document.getElementById('root'));
+var user = User_1.User.buildUser({
+  name: 'totto',
+  age: 20
+});
+var userForm = new Userform_1.UserForm(document.getElementById('root'), user);
 userForm.render();
 },{"./models/User":"src/models/User.ts","./models/Collection":"src/models/Collection.ts","./views/Userform":"src/views/Userform.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -2685,7 +2690,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53648" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60629" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
