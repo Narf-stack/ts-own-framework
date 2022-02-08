@@ -2575,7 +2575,17 @@ function () {
     this.onSetAgeClick = function () {
       _this.model.setRandomAge();
     };
+
+    this.bindModel();
   }
+
+  UserForm.prototype.bindModel = function () {
+    var _this = this;
+
+    this.model.on('change', function () {
+      _this.render();
+    });
+  };
 
   UserForm.prototype.eventsMap = function () {
     return {
@@ -2611,6 +2621,7 @@ function () {
   };
 
   UserForm.prototype.render = function () {
+    this.parent.innerHTML = '';
     var templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
     this.bindEvents(templateElement.content);
@@ -2702,7 +2713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63373" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
