@@ -5,12 +5,17 @@ export class UserForm {
 
     eventsMap():{[key:string]:()=> void}{
         return {
-            'click:button':this.onButtonClick
+            'click:#test':this.onButtonClick,
+            'click:#set-age':this.onSetAgeClick
         }
     }
 
     onButtonClick():void{
         console.log('Hi there')
+    }
+
+    onSetAgeClick = ():void =>{
+        this.model.setRandomAge()
     }
 
     template():string{
@@ -20,7 +25,8 @@ export class UserForm {
                 <div>User name: ${this.model.get('name')}</div>
                 <div>User age: ${this.model.get('age')}</div>
                 <input />
-                <button>Click Me </button>
+                <button id='test'>Click Me to test </button>
+                <button id='set-age'>Set random age </button>
             <div>
         `
     }
@@ -30,8 +36,6 @@ export class UserForm {
         for( let eventKey in eventsMap){
             const[eventName, selector] = eventKey.split(':')
 
-            console.log(eventKey)
-            console.log(selector)
             fragment.querySelectorAll(selector).forEach(element => {
                 element.addEventListener(eventName, eventsMap[eventKey])
             })

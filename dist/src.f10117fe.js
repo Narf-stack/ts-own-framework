@@ -2544,6 +2544,13 @@ function (_super) {
     });
   };
 
+  User.prototype.setRandomAge = function () {
+    var age = Math.round(Math.random() * 1000);
+    this.set({
+      age: age
+    });
+  };
+
   return User;
 }(Model_1.Model);
 
@@ -2560,13 +2567,20 @@ var UserForm =
 /** @class */
 function () {
   function UserForm(parent, model) {
+    var _this = this;
+
     this.parent = parent;
     this.model = model;
+
+    this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
   }
 
   UserForm.prototype.eventsMap = function () {
     return {
-      'click:button': this.onButtonClick
+      'click:#test': this.onButtonClick,
+      'click:#set-age': this.onSetAgeClick
     };
   };
 
@@ -2575,7 +2589,7 @@ function () {
   };
 
   UserForm.prototype.template = function () {
-    return " \n            <div>\n                <h1> User Form </h1>\n                <div>User name: ".concat(this.model.get('name'), "</div>\n                <div>User age: ").concat(this.model.get('age'), "</div>\n                <input />\n                <button>Click Me </button>\n            <div>\n        ");
+    return " \n            <div>\n                <h1> User Form </h1>\n                <div>User name: ".concat(this.model.get('name'), "</div>\n                <div>User age: ").concat(this.model.get('age'), "</div>\n                <input />\n                <button id='test'>Click Me to test </button>\n                <button id='set-age'>Set random age </button>\n            <div>\n        ");
   };
 
   UserForm.prototype.bindEvents = function (fragment) {
@@ -2586,8 +2600,6 @@ function () {
           eventName = _a[0],
           selector = _a[1];
 
-      console.log(eventKey);
-      console.log(selector);
       fragment.querySelectorAll(selector).forEach(function (element) {
         element.addEventListener(eventName, eventsMap[eventKey]);
       });
@@ -2690,7 +2702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60629" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63373" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
