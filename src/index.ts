@@ -2,7 +2,7 @@ import { User,UserProps } from './models/User'
 import { Collection } from './models/Collection'
 import axios from 'axios'
 import { UserForm } from './views/Userform'
-
+import { UserEdit } from './views/UserEdit'
 
 // const user = new User({name: 'test', age: 20});
 // user.on('click',()=>{
@@ -38,24 +38,31 @@ import { UserForm } from './views/Userform'
 
 // user.save()
 
-const collection = new Collection<User,UserProps>(
-    'http://localhost:3000/users',
-    (json: UserProps) => User.buildUser(json)
-)
+// const collection = new Collection<User,UserProps>(
+//     'http://localhost:3000/users',
+//     (json: UserProps) => User.buildUser(json)
+// )
 
 
-collection.on('change', ()=>{
-    console.log(collection)
-})
+// collection.on('change', ()=>{
+//     console.log(collection)
+// })
 
-collection.fetch()
+// collection.fetch()
 
 const user = User.buildUser({name:'totto', age:20})
 const root = document.getElementById('root')
 
+// if( root){
+//     const userForm  = new UserForm(root, user)
+//     userForm.render()
+// }else {
+//     throw new Error('Root Element not found')
+// }
+
 if( root){
-    const userForm  = new UserForm(root, user)
-    userForm.render()
+    const userEdit  = new UserEdit(root, user)
+    userEdit.render()
 }else {
     throw new Error('Root Element not found')
 }
