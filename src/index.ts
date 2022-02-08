@@ -1,6 +1,8 @@
 import { User,UserProps } from './models/User'
 import { Collection } from './models/Collection'
 import axios from 'axios'
+import { UserForm } from './views/Userform'
+
 
 // const user = new User({name: 'test', age: 20});
 // user.on('click',()=>{
@@ -47,3 +49,8 @@ collection.on('change', ()=>{
 })
 
 collection.fetch()
+
+
+const userForm  = new UserForm(document.getElementById('root'))
+
+userForm.render()
