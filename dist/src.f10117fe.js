@@ -2678,6 +2678,10 @@ var UserForm = /*#__PURE__*/function (_View_1$View) {
 
     _this = _super.apply(this, arguments);
 
+    _this.onSaveClick = function () {
+      _this.model.save();
+    };
+
     _this.onSetAgeClick = function () {
       _this.model.setRandomAge();
     };
@@ -2702,7 +2706,8 @@ var UserForm = /*#__PURE__*/function (_View_1$View) {
     value: function eventsMap() {
       return {
         'click:#set-name': this.onSetNameClick,
-        'click:#set-age': this.onSetAgeClick
+        'click:#set-age': this.onSetAgeClick,
+        'click:.save-model': this.onSaveClick
       };
     }
   }, {
@@ -2713,7 +2718,7 @@ var UserForm = /*#__PURE__*/function (_View_1$View) {
   }, {
     key: "template",
     value: function template() {
-      return " \n            <div>\n                <h1> User Form </h1>\n                <div>User name: ".concat(this.model.get('name'), "</div>\n                <div>User age: ").concat(this.model.get('age'), "</div>\n                <input />\n                <button id='set-name'>Change name </button>\n                <button id='set-age'>Set random age </button>\n            <div>\n        ");
+      return " \n            <div>\n                <input  placeholder=\"".concat(this.model.get('name'), "\"/>\n                <button id='set-name'>Change name </button>\n                <button id='set-age'>Set random age </button>\n                <button class='save-model'> Save </button>\n            <div>\n        ");
     }
   }]);
 
@@ -2808,7 +2813,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51527" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57564" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
