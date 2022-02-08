@@ -6,8 +6,13 @@ export abstract class View<T extends Model<K>,K > {
         this.bindModel()
     }
 
-    abstract eventsMap(): {[key:string]: () => void}
     abstract template():string
+    
+    // abstract eventsMap(): {[key:string]: () => void} // Is required
+    eventsMap(): {[key:string]: () => void}{ // No longer required to be implemented in a child class
+        return {}
+    }
+
 
     bindModel():void{
         this.model.on('change', ()=>{

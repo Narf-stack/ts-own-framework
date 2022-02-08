@@ -2588,9 +2588,15 @@ var View = /*#__PURE__*/function () {
     this.parent = parent;
     this.model = model;
     this.bindModel();
-  }
+  } // abstract eventsMap(): {[key:string]: () => void} // Is required
+
 
   _createClass(View, [{
+    key: "eventsMap",
+    value: function eventsMap() {
+      return {};
+    }
+  }, {
     key: "bindModel",
     value: function bindModel() {
       var _this = this;
